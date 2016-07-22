@@ -1,0 +1,69 @@
+#+TITLE: WikiText Back-End for Org Export Engine
+#+AUTHOR: Victor Santos
+#+DATE: 20160501112510000
+#+KEYWORDS: WikiText TiddlyWiki Emacs Org-mode
+#+OPTIONS: toc:0 num:nil
+
+* ox-wikitext.el
+
+[[https://www.gnu.org/software/emacs/][GNU/Emacs]] [[http://orgmode.org/][Org mode]] backend for exporting files to WikiText format, to be used in [[http://tiddlywiki.com/][TiddlyWiki]].
+
+This is a derived backend which uses =ox-html= as a base to export the file to a tiddler. As probably I use only a small subset of the wholeness of org-mode markup, this backend is most likely to be rather incomplete; anything not covered here is exported as html code, which is enough for most purposes.
+
+Of course, if think this is not enough for you, feel free to open an issue and/or send a pull request; any feedback is always welcome! =)
+
+** Requirements
+This was tested on GNU Emacs =24.5.1= and Org mode =8.3.4=.
+
+* Demo
+** Text formatting
+You can make words *bold*, /italic/, _underlined_, =code= and ~verbatim~, and, if you must, +strike-through+.
+
+You can also try some "extreme" cases:
+- /*bold italic*/
+- */italic bold/*
+- _*bold underline*_
+- *_underlined bold_*
+
+You can also add an horizontal rule:
+
+-----------
+
+* Tables
+Here a simple table:
+| a | b |
+|---+---|
+| c | d |
+
+#+NAME: Income2012v
+|       | Income May 2012 | Income June 2012 |
+|-------+-----------------+------------------|
+| Joe   |              12 |               10 |
+| Alice |              22 |               24 |
+| Bob   |              16 |               17 |
+|-------+-----------------+------------------|
+| sum   |              50 |               51 |
+
+#+NAME: comparison-table-vertical
+|       | June 2012 (from above) | plus 20 percent | June 2013 | Difference |
+|-------+------------------------+-----------------+-----------+------------|
+| Joe   |                     10 |            12.0 |        11 |       -1.0 |
+| Alice |                     24 |            28.8 |        31 |        2.2 |
+| Bob   |                     17 |            20.4 |        21 |        0.6 |
+|-------+------------------------+-----------------+-----------+------------|
+| sum   |                     51 |                 |           |        1.8 |
+
+* Math
+
+Math is supported by [[https://www.mathjax.org/][MathJax]], through the [[https://github.com/kpe/tw5-mathjax-plugin][tw5-mathjax-plugin]].
+
+When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
+\begin{equation}
+x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}.
+\end{equation}
+
+* COMMENT Local variables
+# Local variables:
+# eval: (load-file "ox-wikitext.el")
+# eval: (require 'ox-wikitext)
+# End:
